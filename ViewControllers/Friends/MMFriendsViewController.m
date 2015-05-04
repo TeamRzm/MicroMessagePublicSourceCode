@@ -15,6 +15,12 @@
     UITableView *boundTableView;
     
     NSMutableArray *boundTableViewDataSource;
+    
+    UIView *tableViewHeadView;
+    
+    EGOImageView *headAvterImageView;
+    
+    UILabel *userNameLable;
 }
 @end
 
@@ -33,6 +39,28 @@
     boundTableView.delegate = self;
     boundTableView.dataSource = self;
     [self.view addSubview:boundTableView];
+    
+    
+    tableViewHeadView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kMM_SCREEN_W, 200)];
+    UIImageView *backGroundView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kMM_SCREEN_W, 200.0f)];
+    backGroundView.image = [UIImage imageNamed:@"yourown_1.jpg"];
+    [tableViewHeadView addSubview:backGroundView];
+    boundTableView.tableHeaderView = tableViewHeadView;
+    
+    UIImageView *lineRectImage = [[UIImageView alloc] initWithFrame:CGRectMake(kMM_SCREEN_W / 2.0f - 55.0f / 2.0f, 100.0f, 55.0f, 55.0f)];
+    lineRectImage.image = [UIImage imageNamed:@"bg_imgframe"];
+    [tableViewHeadView addSubview:lineRectImage];
+    
+    headAvterImageView = [[EGOImageView alloc] initWithPlaceholderImage:[UIImage imageNamed:@"t_avter_9"]];
+    headAvterImageView.frame = CGRectMake(kMM_SCREEN_W / 2.0f - 50.0f / 2.0f, 102.5f, 50.0f, 50.0f);
+    [tableViewHeadView addSubview:headAvterImageView];
+    
+    userNameLable = [[UILabel alloc] initWithFrame:CGRectMake(0, 165, kMM_SCREEN_W, 20)];
+    userNameLable.font = [UIFont fontWithName:kMM_DEFAULT_FONT_NAME_BLOD size:14.0f];
+    userNameLable.textColor = [UIColor whiteColor];
+    userNameLable.text = @"怪蜀黍隔壁的小妹妹";
+    userNameLable.textAlignment = NSTextAlignmentCenter;
+    [tableViewHeadView addSubview:userNameLable];
 }
 
 - (void)didReceiveMemoryWarning {
