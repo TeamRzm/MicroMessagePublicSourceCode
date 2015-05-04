@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		5B6F1C461AE8D9DC006CC1A6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6F1C451AE8D9DC006CC1A6 /* main.m */; };
 		5B6F1C491AE8D9DC006CC1A6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6F1C481AE8D9DC006CC1A6 /* AppDelegate.m */; };
-		5B6F1C4C1AE8D9DC006CC1A6 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6F1C4B1AE8D9DC006CC1A6 /* FirstViewController.m */; };
-		5B6F1C4F1AE8D9DC006CC1A6 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6F1C4E1AE8D9DC006CC1A6 /* SecondViewController.m */; };
 		5B6F1C521AE8D9DC006CC1A6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B6F1C501AE8D9DC006CC1A6 /* Main.storyboard */; };
 		5B6F1C541AE8D9DC006CC1A6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B6F1C531AE8D9DC006CC1A6 /* Images.xcassets */; };
 		5B6F1C571AE8D9DC006CC1A6 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B6F1C551AE8D9DC006CC1A6 /* LaunchScreen.xib */; };
@@ -285,6 +283,8 @@
 		5B6F1F321AE8F6E9006CC1A6 /* libstdc++.6.0.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B6F1F311AE8F6E9006CC1A6 /* libstdc++.6.0.9.dylib */; };
 		5B6F1F341AE8F6EF006CC1A6 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B6F1F331AE8F6EF006CC1A6 /* AudioToolbox.framework */; };
 		5B6F1F361AE8F6F5006CC1A6 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B6F1F351AE8F6F5006CC1A6 /* Security.framework */; };
+		5B9770371AF7B56C00A0E283 /* CommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B9770341AF7B56C00A0E283 /* CommentTableViewCell.m */; };
+		5B9770381AF7B56C00A0E283 /* FriendCircleContentEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B9770361AF7B56C00A0E283 /* FriendCircleContentEntity.m */; };
 		9684EFA51AF5F71300DAA6F5 /* bnt_dropbnt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9684EFA01AF5F71300DAA6F5 /* bnt_dropbnt@2x.png */; };
 		9684EFA61AF5F71300DAA6F5 /* btn_delete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9684EFA11AF5F71300DAA6F5 /* btn_delete@2x.png */; };
 		9684EFA71AF5F71300DAA6F5 /* ico_camero@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9684EFA21AF5F71300DAA6F5 /* ico_camero@2x.png */; };
@@ -345,10 +345,6 @@
 		5B6F1C451AE8D9DC006CC1A6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5B6F1C471AE8D9DC006CC1A6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5B6F1C481AE8D9DC006CC1A6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		5B6F1C4A1AE8D9DC006CC1A6 /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
-		5B6F1C4B1AE8D9DC006CC1A6 /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
-		5B6F1C4D1AE8D9DC006CC1A6 /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
-		5B6F1C4E1AE8D9DC006CC1A6 /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 		5B6F1C511AE8D9DC006CC1A6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5B6F1C531AE8D9DC006CC1A6 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		5B6F1C561AE8D9DC006CC1A6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -738,6 +734,10 @@
 		5B6F1F311AE8F6E9006CC1A6 /* libstdc++.6.0.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.0.9.dylib"; path = "usr/lib/libstdc++.6.0.9.dylib"; sourceTree = SDKROOT; };
 		5B6F1F331AE8F6EF006CC1A6 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		5B6F1F351AE8F6F5006CC1A6 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		5B9770331AF7B56C00A0E283 /* CommentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentTableViewCell.h; path = ViewControllers/Friends/CommentTableViewCell.h; sourceTree = "<group>"; };
+		5B9770341AF7B56C00A0E283 /* CommentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentTableViewCell.m; path = ViewControllers/Friends/CommentTableViewCell.m; sourceTree = "<group>"; };
+		5B9770351AF7B56C00A0E283 /* FriendCircleContentEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FriendCircleContentEntity.h; path = ViewControllers/Friends/FriendCircleContentEntity.h; sourceTree = "<group>"; };
+		5B9770361AF7B56C00A0E283 /* FriendCircleContentEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FriendCircleContentEntity.m; path = ViewControllers/Friends/FriendCircleContentEntity.m; sourceTree = "<group>"; };
 		9684EFA01AF5F71300DAA6F5 /* bnt_dropbnt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bnt_dropbnt@2x.png"; sourceTree = "<group>"; };
 		9684EFA11AF5F71300DAA6F5 /* btn_delete@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_delete@2x.png"; sourceTree = "<group>"; };
 		9684EFA21AF5F71300DAA6F5 /* ico_camero@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ico_camero@2x.png"; sourceTree = "<group>"; };
@@ -863,10 +863,6 @@
 			children = (
 				5B6F1C471AE8D9DC006CC1A6 /* AppDelegate.h */,
 				5B6F1C481AE8D9DC006CC1A6 /* AppDelegate.m */,
-				5B6F1C4A1AE8D9DC006CC1A6 /* FirstViewController.h */,
-				5B6F1C4B1AE8D9DC006CC1A6 /* FirstViewController.m */,
-				5B6F1C4D1AE8D9DC006CC1A6 /* SecondViewController.h */,
-				5B6F1C4E1AE8D9DC006CC1A6 /* SecondViewController.m */,
 				5B6F1C501AE8D9DC006CC1A6 /* Main.storyboard */,
 				5B6F1C531AE8D9DC006CC1A6 /* Images.xcassets */,
 				5B6F1C551AE8D9DC006CC1A6 /* LaunchScreen.xib */,
@@ -948,6 +944,10 @@
 		5B6F1C741AE8E230006CC1A6 /* Friends */ = {
 			isa = PBXGroup;
 			children = (
+				5B9770331AF7B56C00A0E283 /* CommentTableViewCell.h */,
+				5B9770341AF7B56C00A0E283 /* CommentTableViewCell.m */,
+				5B9770351AF7B56C00A0E283 /* FriendCircleContentEntity.h */,
+				5B9770361AF7B56C00A0E283 /* FriendCircleContentEntity.m */,
 				5B6F1C7A1AE8E2A8006CC1A6 /* MMFriendsViewController.h */,
 				5B6F1C7B1AE8E2A8006CC1A6 /* MMFriendsViewController.m */,
 			);
@@ -2045,7 +2045,6 @@
 			files = (
 				5B6F1EF11AE8F03B006CC1A6 /* UIView+Toast.m in Sources */,
 				5B6F1E4F1AE8F03B006CC1A6 /* NSBundle+CTAssetsPickerController.m in Sources */,
-				5B6F1C4F1AE8D9DC006CC1A6 /* SecondViewController.m in Sources */,
 				5B6F1F011AE8F03B006CC1A6 /* UITextView+Placeholder.m in Sources */,
 				5B6F1E111AE8F03A006CC1A6 /* ALAlertBanner.m in Sources */,
 				5B6F1ED51AE8F03B006CC1A6 /* NSObject+SBJSON.m in Sources */,
@@ -2089,6 +2088,7 @@
 				96D2526B1AF5096700B1949E /* MMChatViewController.m in Sources */,
 				5B6F1EDD1AE8F03B006CC1A6 /* SBJsonStreamWriterAccumulator.m in Sources */,
 				5B6F1E1E1AE8F03B006CC1A6 /* ASIDownloadCache.m in Sources */,
+				5B9770371AF7B56C00A0E283 /* CommentTableViewCell.m in Sources */,
 				5B6F1E211AE8F03B006CC1A6 /* ASIInputStream.m in Sources */,
 				5B6F1EC11AE8F03B006CC1A6 /* MLEmojiLabel.m in Sources */,
 				5B6F1C7C1AE8E2A8006CC1A6 /* MMFriendsViewController.m in Sources */,
@@ -2115,7 +2115,6 @@
 				5B6F1ED91AE8F03B006CC1A6 /* SBJsonStreamParserAccumulator.m in Sources */,
 				5B6F1E421AE8F03B006CC1A6 /* ALAsset+assetType.m in Sources */,
 				5B6F1E201AE8F03B006CC1A6 /* ASIHTTPRequest.m in Sources */,
-				5B6F1C4C1AE8D9DC006CC1A6 /* FirstViewController.m in Sources */,
 				5B6F1C461AE8D9DC006CC1A6 /* main.m in Sources */,
 				5B6F1EF81AE8F03B006CC1A6 /* UIImage+Utility.m in Sources */,
 				5B6F1ED31AE8F03B006CC1A6 /* wavreader.mm in Sources */,
@@ -2148,6 +2147,7 @@
 				5B6F1E2C1AE8F03B006CC1A6 /* ASIS3BucketRequest.m in Sources */,
 				5B6F1EC51AE8F03B006CC1A6 /* RefreshView.m in Sources */,
 				96C97A6A1AF71A8F00962052 /* MMAddGroupViewController.m in Sources */,
+				5B9770381AF7B56C00A0E283 /* FriendCircleContentEntity.m in Sources */,
 				5B6F1E381AE8F03B006CC1A6 /* FaceImgCode.m in Sources */,
 				5B6F1EF91AE8F03B006CC1A6 /* UIImageView+XHURLDownload.m in Sources */,
 				5B6F1EDC1AE8F03B006CC1A6 /* SBJsonStreamWriter.m in Sources */,

@@ -7,21 +7,124 @@
 //
 
 #import "MMFriendsViewController.h"
+#import "XHImageViewer.h"
+#import "CommentTableViewCell.h"
 
-@interface MMFriendsViewController ()
-
+@interface MMFriendsViewController () <UITableViewDelegate, UITableViewDataSource,CommentTableViewCellDelegate,XHImageViewerDelegate>
+{
+    UITableView *boundTableView;
+    
+    NSMutableArray *boundTableViewDataSource;
+}
 @end
 
 @implementation MMFriendsViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
+    
+    self.title = @"友圈";
     // Do any additional setup after loading the view.
+    boundTableViewDataSource = [[NSMutableArray alloc] init];
+    
+    boundTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kMM_SCREEN_W, kMM_SCREEN_H)
+                                                  style:UITableViewStyleGrouped];
+    boundTableView.delegate = self;
+    boundTableView.dataSource = self;
+    [self.view addSubview:boundTableView];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+//    return boundTableViewDataSource.count;
+    return 10;
+}
+
+- (CGFloat) tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 0.1f;
+}
+
+
+- (CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 0.1f;
+}
+
+- (UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    return [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+}
+
+- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    FriendCircleContentEntity *entity = [[FriendCircleContentEntity alloc] init];
+    entity.avterURL = @"t_avter_9";
+    entity.content = @"     深入贯彻习主席系列重要讲话精神特别是关于加强纪律建设的重要指示，紧紧围绕实现党在新形势下的强军目标，认真落实依法治军、从严治军要求，对严格军队党员领导干部纪律约束作出明确规定，是新形势下严格党员领导干部纪律约束、加强军队纪律建设的重要指导性文件。";
+    entity.contentImgURLList = @[@"t_avter_5",@"t_avter_6",@"t_avter_7",@"t_avter_8",@"t_avter_1",@"t_avter_2",@"t_avter_3",@"t_avter_4",@"t_avter_0"];
+    entity.address = @"新家园小区";
+    entity.nickName = @"邻家小妹";
+    entity.commitDate = @"5分钟前";
+    entity.lookCount = @"2031";
+    entity.pointApproves = @"232";
+    entity.commentCount = @"14";
+    
+    return [CommentTableViewCell heightWithEntity:entity];
+}
+
+
+- (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    CommentTableViewCell *cell = [[CommentTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kMM_TABLEVIEW_CELL_NOIDENTIFIER];
+    cell.delegate = self;
+    FriendCircleContentEntity *entity = [[FriendCircleContentEntity alloc] init];
+    entity.avterURL = @"t_avter_9";
+    entity.content = @"     深入贯彻习主席系列重要讲话精神特别是关于加强纪律建设的重要指示，紧紧围绕实现党在新形势下的强军目标，认真落实依法治军、从严治军要求，对严格军队党员领导干部纪律约束作出明确规定，是新形势下严格党员领导干部纪律约束、加强军队纪律建设的重要指导性文件。";
+    entity.contentImgURLList = @[@"t_avter_5",@"t_avter_6",@"t_avter_7",@"t_avter_8",@"t_avter_1",@"t_avter_2",@"t_avter_3",@"t_avter_4",@"t_avter_0"];
+    entity.address = @"新家园小区";
+    entity.nickName = @"邻家小妹";
+    entity.commitDate = @"5分钟前";
+    entity.lookCount = @"2031";
+    entity.pointApproves = @"232";
+    entity.commentCount = @"14";
+    [cell setDateEntity:entity];
+    return cell;
+}
+
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+//    if (currentSegmentIndex == 0 || currentSegmentIndex == 2)
+//    {
+//        ComentDetailViewController *nVC = [[ComentDetailViewController alloc] initWithNibName:nil bundle:nil];
+//        nVC.hidesBottomBarWhenPushed = YES;
+//        [self.navigationController pushViewController:nVC animated:YES];
+//    }
+//    else if (currentSegmentIndex == 1)
+//    {
+//        ActivityDetailViewController *nVC = [[ActivityDetailViewController alloc] initWithNibName:nil bundle:nil];
+//        nVC.hidesBottomBarWhenPushed = YES;
+//        [self.navigationController pushViewController:nVC animated:YES];
+//    }
+//    
+//    return ;
+}
+
+- (void) commentTableViewCell : (CommentTableViewCell*) _cell tapSubImageViews : (UIImageView*) tapView allSubImageViews : (NSMutableArray *) _allSubImageviews
+{
+    XHImageViewer *imageViewer = [[XHImageViewer alloc] init];
+    imageViewer.delegate = self;
+    [imageViewer showWithImageViews:_allSubImageviews selectedView:tapView];
 }
 
 /*

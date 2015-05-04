@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
     </dependencies>
     <scenes>
         <!--Tab Bar Controller-->
@@ -56,7 +56,9 @@
         <scene sceneID="vhu-gV-Glw">
             <objects>
                 <navigationController id="dk0-k7-qR2" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="友人" image="btn_youren_pressed.png" id="Ae1-Z4-VcG"/>
+                    <tabBarItem key="tabBarItem" title="友人" image="btn_youren_pressed.png" id="Ae1-Z4-VcG">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
+                    </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="A0o-5e-gej">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -203,10 +205,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="btn_yingyong.png" width="44" height="44"/>
-        <image name="btn_youlu.png" width="44" height="44"/>
-        <image name="btn_youquan.png" width="44" height="44"/>
-        <image name="btn_youren_pressed.png" width="44" height="44"/>
+        <image name="btn_yingyong.png" width="21" height="5"/>
+        <image name="btn_youlu.png" width="20" height="19"/>
+        <image name="btn_youquan.png" width="24" height="17"/>
+        <image name="btn_youren_pressed.png" width="24" height="19"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
