@@ -1,0 +1,78 @@
+//
+//  NeighborsApp.pch
+//  NeighborsApp
+//
+//  Created by Martin.Ren on 15/4/13.
+//  Copyright (c) 2015年 Martin.Ren. All rights reserved.
+//
+
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import "EGOImageView.h"
+#import <QuartzCore/QuartzCore.h>
+#import <AudioToolbox/AudioToolbox.h>
+#import "SIAlertView.h"
+
+
+#endif
+
+
+#define CONFIG_TEST_DATE
+
+#define kMM_TABLEVIEW_CELL_NOIDENTIFIER @"NBR_TABLEVIEW_CELL_NOIDENTIFIER"
+#define kMM_SCREEN_W [UIScreen mainScreen].bounds.size.width
+#define kMM_SCREEN_H [UIScreen mainScreen].bounds.size.height
+
+//转换16进制颜色
+#define UIColorFromRGB(rgbValue) ([UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0])
+
+#define kMM_DEFAULT_FONT_NAME       @"STHeitiSC-Light"
+#define kMM_DEFAULT_FONT_NAME_BLOD  @"STHeitiSC-Medium"
+
+//黄色
+#define kMM_ProjectColor_StandYellow      ([UIColor colorWithRed:245.0f/255.0f green:204.0f/255.0f blue:66.0f/255.0f alpha:1.0f])
+
+//青绿
+#define kMM_ProjectColor_LightGreen      ([UIColor colorWithRed:85.0f/255.0f green:223.0f/255.0f blue:81.0f/255.0f alpha:1.0f])
+
+//白色
+#define kMM_ProjectColor_StandWhite      UIColorFromRGB(0xFFFFFF)
+//标准蓝
+#define kMM_ProjectColor_StandBlue       UIColorFromRGB(0x3596DD)
+
+//背景灰
+#define kMM_ProjectColor_BackGroundGray  UIColorFromRGB(0xF2F3F7)
+
+//浅灰
+#define kMM_ProjectColor_LightGray       UIColorFromRGB(0xE5E5E5)
+
+//边线浅灰
+#define kMM_ProjectColor_LineLightGray   UIColorFromRGB(0xD1D1D1)
+
+//中灰
+#define kMM_ProjectColor_MidGray         UIColorFromRGB(0x999999)
+
+//深灰
+#define kMM_ProjectColor_DeepGray        UIColorFromRGB(0x535353)
+
+//深黑
+#define kMM_ProjectColor_DeepBlack       UIColorFromRGB(0x2E2E2E)
+
+//标准红
+#define kMM_ProjectColor_StandRed        UIColorFromRGB(0xFB4747)
+
+//标准绿
+#define kMM_ProjectColor_StandGreen      UIColorFromRGB(0x8ECD4B)
+
+//标准青
+#define kMM_ProjectColor_StandGreen2     UIColorFromRGB(0x77D0DE)
+
+//标配青
+#define kMM_ProjectColor_GenerallyGreen  UIColorFromRGB(0x7FC6C8)
+
+//标配红
+#define kMM_ProjectColor_GenerallyRed    UIColorFromRGB(0xF89594)
+
+//标配蓝
+#define kMM_ProjectColor_GenerallyBlue   UIColorFromRGB(0x95ADCD)
