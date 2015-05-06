@@ -15,4 +15,5 @@
     NSMutableArray *_searchKeyArr;
     
 }
+@property (nonatomic,assign) BOOL isSendKard;
 @end

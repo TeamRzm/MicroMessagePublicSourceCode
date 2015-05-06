@@ -23,22 +23,23 @@
     if (self)
     {
         //头像
-        avterImageView = [[EGOImageView alloc] initWithFrame:CGRectMake(5, 5, 50, 50)];
+        avterImageView = [[EGOImageView alloc] initWithFrame:CGRectMake(10, 10, 50, 50)];
         //        avterImageView.placeholderImage = [UIImage imageNamed:@""];
         //        avterImageView.image = [UIImage imageNamed:subfriend.avterURL];
         avterImageView.layer.borderColor = kMM_ProjectColor_LightGray.CGColor;
         avterImageView.layer.borderWidth = 1.0f;
+        avterImageView.layer.cornerRadius = 4.0f;
         [self.contentView addSubview:avterImageView];
         
         //用户名
-        userNameLable = [[UILabel alloc] initWithFrame:CGRectMake(60, 5, kMM_SCREEN_W-80.0f, 20)];
+        userNameLable = [[UILabel alloc] initWithFrame:CGRectMake(70, 10, kMM_SCREEN_W-80.0f, 25)];
         userNameLable.font = [UIFont boldSystemFontOfSize:16.0f];
         userNameLable.textColor = kMM_ProjectColor_DeepGray;
         userNameLable.text = dataModel.nickName;
         [self.contentView addSubview:userNameLable];
         
         //消息
-        contentLable = [[UILabel alloc] initWithFrame:CGRectMake(60.0f, 35, kMM_SCREEN_W-80.0f, 20)];
+        contentLable = [[UILabel alloc] initWithFrame:CGRectMake(70.0f, 35, kMM_SCREEN_W-80.0f, 25)];
         contentLable.font = [UIFont systemFontOfSize:14.0f];
         contentLable.textColor = [UIColor lightGrayColor];
         contentLable.text = dataModel.signMessage;

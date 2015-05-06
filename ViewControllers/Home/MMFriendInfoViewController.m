@@ -10,6 +10,8 @@
 #import "MMChatViewController.h"
 #import "MMChangeRemarkViewController.h"
 #import "MMFriendAccessViewController.h"
+#import "MMAddGroupViewController.h"
+
 
 
 @interface MMFriendInfoViewController ()
@@ -251,7 +253,8 @@
                 break;
             case 2:
             {
-                MMFriendAccessViewController *accessview = [[MMFriendAccessViewController alloc] init];
+                MMAddGroupViewController *accessview = [[MMAddGroupViewController alloc] init];
+                [accessview setIsSendKard:YES];
                 [accessview setHidesBottomBarWhenPushed:YES];
                 [self.navigationController pushViewController:accessview animated:YES];
                 return;

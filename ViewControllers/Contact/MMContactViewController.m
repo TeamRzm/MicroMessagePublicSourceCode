@@ -106,7 +106,7 @@
 
 -(float) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 60.0f;
+    return 70.0f;
 }
 //设置section的title
 -(NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section

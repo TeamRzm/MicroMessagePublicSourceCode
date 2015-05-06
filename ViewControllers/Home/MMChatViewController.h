@@ -7,11 +7,12 @@
 //
 
 #import "MMBaseViewController.h"
+#import "ChatListCell.h"
+#import "aya_MultimediaKeyBoard.h"
 
-@interface MMChatViewController : MMBaseViewController
+
+@interface MMChatViewController : UIViewController<ChatListCellDelegate,aya_MultimediaKeyBoardDelegate,UITableViewDataSource,UITableViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
 @property (nonatomic,strong) NSString *targetName;
 @property (nonatomic,assign) BOOL isGroupChat;
-
-
 @end

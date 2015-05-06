@@ -262,8 +262,16 @@
 -(void)MMGroupListViewDidClicked:(MMFriendEntity *)_model
 {
     NSLog(@"_model name =%@",_model.nickName);
-    MMFriendInfoViewController *infoview = [[MMFriendInfoViewController alloc] init];
-    [self.navigationController pushViewController:infoview animated:YES];
+    if ([_model.avterURL isEqualToString:@"add_groupadd_nor"])
+    {
+        NSLog(@"邀请好友");
+    }
+    else
+    {
+        MMFriendInfoViewController *infoview = [[MMFriendInfoViewController alloc] init];
+        [self.navigationController pushViewController:infoview animated:YES];
+    }
+    
 }
 
 -(void)MMGroupListViewDelete:(MMFriendEntity *)_model

@@ -20,11 +20,20 @@
 @end
 
 @implementation MMAddGroupViewController
+@synthesize isSendKard;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self setTitle:@"新建群聊"];
+    if (isSendKard)
+    {
+        [self setTitle:@"选择联系人"];
+    }
+    else
+    {
+        [self setTitle:@"新建群聊"];
+
+    }
     _dataArr = [[NSMutableArray alloc] init];
     _resultArr = [[NSMutableArray alloc] init];
     _searchKeyArr = [[NSMutableArray alloc] init];
@@ -147,9 +156,16 @@
     }
     if (indexPath.section == 0 && tableView == self.tableView)
     {
-        UILabel *leftLable = [[UILabel alloc] initWithFrame:CGRectMake(15.0f, 15, 80.0f, 30.0f)];
+        UILabel *leftLable = [[UILabel alloc] initWithFrame:CGRectMake(15.0f, 15, 200.0f, 30.0f)];
         [leftLable setBackgroundColor:[UIColor clearColor]];
-        [leftLable setText:@"选择一个群"];
+        if (isSendKard)
+        {
+            [leftLable setText:@"选择一个联系人"];
+        }
+        else{
+            [leftLable setText:@"选择一个群"];
+        }
+        
         [leftLable setTextColor:kMM_ProjectColor_DeepGray];
         [leftLable setTextAlignment:NSTextAlignmentLeft];
         [leftLable setFont:[UIFont fontWithName:kMM_DEFAULT_FONT_NAME_BLOD size:16.0f]];
