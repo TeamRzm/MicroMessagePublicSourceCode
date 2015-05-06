@@ -9,6 +9,8 @@
 #import "MMGroupViewController.h"
 #import "MMAddGroupViewController.h"
 #import "MMCheckGroupViewController.h"
+#import "MMChatViewController.h"
+
 
 
 @interface MMGroupViewController ()
@@ -171,6 +173,28 @@
     }
     return @"群聊";
 }
+
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    MMGroupEntity *subEntity = nil;
+    if (tableView !=self.tableView)
+    {
+        subEntity = _resultData[indexPath.row];
+    }
+    else
+    {
+        subEntity = _dataArray[indexPath.row];
+    }
+    MMChatViewController *chatview = [[MMChatViewController alloc] init];
+    [chatview setTargetName:subEntity.nickName];
+    [chatview setIsGroupChat:YES];
+    [chatview setHidesBottomBarWhenPushed:YES];
+    [self.navigationController pushViewController:chatview animated:YES];
+    
+}
+
+
 
 #pragma  mark Gesture Method
 -(void) AvterImageClicked:(UITapGestureRecognizer *) _gesture

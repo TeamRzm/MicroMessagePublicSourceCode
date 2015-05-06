@@ -7,6 +7,7 @@
 //
 
 #import "MMBaseViewController.h"
+#import "MMContactCell.h"
 
 @interface MMContactViewController : MMBaseViewController<UISearchBarDelegate,UITextFieldDelegate>
 {

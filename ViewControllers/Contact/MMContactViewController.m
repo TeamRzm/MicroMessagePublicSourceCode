@@ -12,6 +12,7 @@
 #import "MMChatViewController.h"
 #import "MMFriendAddManagerViewController.h"
 #import "MMGroupViewController.h"
+#import "MMFriendInfoViewController.h"
 
 
 
@@ -201,29 +202,14 @@
             
             subfriend = [[_dataArray objectAtIndex:indexPath.section-1] objectAtIndex:indexPath.row];
         }
-
-        //头像
-        EGOImageView *avterImageView = [[EGOImageView alloc] initWithFrame:CGRectMake(5, 5, 50, 50)];
-        avterImageView.placeholderImage = [UIImage imageNamed:subfriend.avterURL];
-        avterImageView.image = [UIImage imageNamed:subfriend.avterURL];
-        avterImageView.layer.borderColor = kMM_ProjectColor_LightGray.CGColor;
-        avterImageView.layer.borderWidth = 1.0f;
-        [cell.contentView addSubview:avterImageView];
         
-        //用户名
-        UILabel *userNameLable = [[UILabel alloc] initWithFrame:CGRectMake(60, 5, kMM_SCREEN_W-80.0f, 20)];
-        userNameLable.font = [UIFont boldSystemFontOfSize:13.0f];
-        userNameLable.textColor = kMM_ProjectColor_DeepGray;
-        userNameLable.text = subfriend.nickName;
-        [cell.contentView addSubview:userNameLable];
-        
-        //消息
-        UILabel *contentLable = [[UILabel alloc] initWithFrame:CGRectMake(60.0f, 35, kMM_SCREEN_W-80.0f, 20)];
-        contentLable.font = [UIFont systemFontOfSize:12.0f];
-        contentLable.textColor = [UIColor lightGrayColor];
-        contentLable.text = subfriend.signMessage;
-        [cell.contentView addSubview:contentLable];
-
+        MMContactCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"ContactCell"];
+        if (!cell)
+        {
+            cell = [[MMContactCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"ContactCell"];
+        }
+        [cell setDataModel:subfriend];
+        return cell;
     }
     
     
@@ -267,8 +253,7 @@
             
             subfriend = [[_dataArray objectAtIndex:indexPath.section-1] objectAtIndex:indexPath.row];
         }
-        MMChatViewController *chatview = [[MMChatViewController alloc] init];
-        [chatview setTargetName:subfriend.nickName];
+        MMFriendInfoViewController *chatview = [[MMFriendInfoViewController alloc] init];
         [chatview setHidesBottomBarWhenPushed:YES];
         [self.navigationController pushViewController:chatview animated:YES];
     }

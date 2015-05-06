@@ -16,5 +16,8 @@
 @property (nonatomic, copy) NSString* microName;
 @property (nonatomic, copy) NSString* locationInfo;
 @property (nonatomic, copy) NSString* firstNameChar;
+@property (nonatomic, assign) BOOL isCanDelete;
+@property (nonatomic, assign) BOOL isShownickName;
+
 
 @end

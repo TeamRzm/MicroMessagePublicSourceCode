@@ -15,6 +15,8 @@
 @synthesize locationInfo;
 @synthesize avterURL;
 @synthesize firstNameChar;
+@synthesize isCanDelete;
+@synthesize isShownickName;
 
 
 @end

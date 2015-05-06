@@ -11,5 +11,7 @@
 @interface MMChatViewController : MMBaseViewController
 
 @property (nonatomic,strong) NSString *targetName;
+@property (nonatomic,assign) BOOL isGroupChat;
+
 
 @end

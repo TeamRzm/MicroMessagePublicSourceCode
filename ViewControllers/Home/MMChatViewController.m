@@ -7,6 +7,8 @@
 //
 
 #import "MMChatViewController.h"
+#import "MMGroupSettingViewController.h"
+
 
 @interface MMChatViewController ()
 
@@ -14,14 +16,29 @@
 
 @implementation MMChatViewController
 @synthesize targetName;
+@synthesize isGroupChat;
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self setTitle:targetName];
-    [self SetBaseNavigationRightItem:@"header_btn_list"];
+    if (isGroupChat)
+    {
+        [self SetBaseNavigationRightItem:@"header_btn_list"];
+    }
+    
     
 }
+
+#pragma mark Override Method
+-(void)BaseNavigatinRightItemClicked:(UIButton *)sender
+{
+    MMGroupSettingViewController *settingview = [[MMGroupSettingViewController alloc] init];
+    [settingview setHidesBottomBarWhenPushed:YES];
+    [self.navigationController pushViewController:settingview animated:YES];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

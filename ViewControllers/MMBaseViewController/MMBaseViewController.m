@@ -25,7 +25,18 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     [self.view setBackgroundColor:kMM_ProjectColor_BackGroundGray];
+    [self SetBaseBack];
+    
 
+}
+
+-(void) SetBaseBack
+{
+    if ([self.navigationController.viewControllers count] > 1)
+    {
+        [self SetBaseNavigationLeftItem:@"header_btn_Forward"];
+    }
+    
 }
 
 -(void) InitSearchBarView
@@ -126,6 +137,7 @@
 -(void) BaseNavigatinLeftItemClicked:(UIButton *) sender
 {
     NSLog(@"left item clicked!");
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - Table view data source

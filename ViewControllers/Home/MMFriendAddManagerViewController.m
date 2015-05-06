@@ -114,6 +114,7 @@
     [statebutton.titleLabel setFont:[UIFont fontWithName:kMM_DEFAULT_FONT_NAME size:14.0f]];
     [statebutton addTarget:self action:@selector(InvitStateClicked:) forControlEvents:UIControlEventTouchUpInside];
     [statebutton setTag:indexPath.row];
+    [statebutton.layer setCornerRadius:4.0f];
     switch ([subEntity.inviteState intValue])
     {
         case 0:
