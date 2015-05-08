@@ -56,11 +56,21 @@
         [loadingview startAnimating];
         [self addSubview:loadingview];
         
+        userlabel = [[UILabel alloc] initWithFrame:CGRectMake(iconimage.frame.origin.x+iconimage.frame.size.width+10.0f, iconimage.frame.origin.y, 200.0f, 20.0f)];
+        [userlabel setBackgroundColor:[UIColor clearColor]];
+        [userlabel setFont:[UIFont fontWithName:kMM_DEFAULT_FONT_NAME size:14.0f]];
+        [userlabel setTextColor:kMM_ProjectColor_DeepBlack];
+        [userlabel setTextAlignment:NSTextAlignmentLeft];
+        [self addSubview:userlabel];
+        
+        
+        
         resendchatbt = [[UIButton alloc] initWithFrame:CGRectMake(iconimage.frame.origin.x+(iconimage.frame.size.height/2.0-10.0f), iconimage.frame.origin.y + iconimage.frame.size.height+5.0f, 20.0, 20.0)];
         [resendchatbt setBackgroundColor:[UIColor clearColor]];
         [resendchatbt setBackgroundImage:[UIImage imageNamed:@"Chat_ReSendMessage_bg"] forState:UIControlStateNormal];
         [resendchatbt addTarget:self action:@selector(ReSendMessage) forControlEvents:UIControlEventTouchUpInside];
         [resendchatbt setAlpha:0.0];
+        
         [self addSubview:resendchatbt];
         
         
@@ -91,13 +101,16 @@
         voicelb  = [[UILabel alloc] initWithFrame:CGRectMake(iconimage.frame.origin.x+iconimage.frame.size.width+60.0f, 10.0f, 54.0f, 0.0f)];
         [voicelb setBackgroundColor:[UIColor clearColor]];
         [voicelb setFont:[UIFont systemFontOfSize:12.0f]];
-        [voicelb setTextColor:kMM_ProjectColor_DeepGray];
+        [voicelb setTextColor:kMM_ProjectColor_DeepBlack];
         [voicelb setTextAlignment:NSTextAlignmentLeft];
         [self addSubview:voicelb];
 
         
     }
+   
     return self;
+    
+    
 }
 
 
@@ -138,6 +151,14 @@
         
         [self addSubview:loadingview];
         
+        userlabel = [[UILabel alloc] initWithFrame:CGRectMake(10.0f, iconimage.frame.origin.y, iconimage.frame.origin.x-20.0f, 20.0f)];
+        [userlabel setBackgroundColor:[UIColor clearColor]];
+        [userlabel setFont:[UIFont fontWithName:kMM_DEFAULT_FONT_NAME size:14.0f]];
+        [userlabel setTextColor:kMM_ProjectColor_DeepBlack];
+        [userlabel setTextAlignment:NSTextAlignmentRight];
+        [self addSubview:userlabel];
+
+        
         
         resendchatbt = [[UIButton alloc] initWithFrame:CGRectMake(iconimage.frame.origin.x+(iconimage.frame.size.height/2.0-10), iconimage.frame.origin.y + iconimage.frame.size.height+5.0, 20.0, 20.0)];
         [resendchatbt setBackgroundColor:[UIColor clearColor]];
@@ -169,14 +190,14 @@
         
         vodiobg = [[UIButton alloc] initWithFrame:CGRectMake(20.0f, 10.0f, 40.0, 40.0*66/54.0)];
         [vodiobg setBackgroundColor:[UIColor clearColor]];
-        [vodiobg setImage:[UIImage imageNamed:@"chatto_voice_playing"] forState:UIControlStateNormal];
+        [vodiobg setImage:[UIImage imageNamed:@"btn_play"] forState:UIControlStateNormal];
         [vodiobg addTarget:self action:@selector(PlayVoice) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:vodiobg];
         
         voicelb  = [[UILabel alloc] initWithFrame:CGRectMake(iconimage.frame.origin.x-60.0f, 60.0f, 54.0f, 0.0f)];
         [voicelb setBackgroundColor:[UIColor clearColor]];
         [voicelb setFont:[UIFont systemFontOfSize:12.0f]];
-        [voicelb setTextColor:kMM_ProjectColor_LightGray];
+        [voicelb setTextColor:kMM_ProjectColor_DeepBlack];
         [voicelb setTextAlignment:NSTextAlignmentRight];
         [self addSubview:voicelb];
         
@@ -206,6 +227,7 @@
         [loadingview stopAnimating];
     }
     
+    [userlabel setText:MsgModule.M_From];
     
     NSDateFormatter *ft = [[NSDateFormatter alloc] init];
     [ft setDateFormat:@"MM-dd HH:mm:ss"];
@@ -225,8 +247,9 @@
         [voicelb setAlpha:0.0];
         [sendimgview setFrame:CGRectMake(sendimgview.frame.origin.x, sendimgview.frame.origin.y, sendimgview.frame.size.width, 100.0f)];
         [sendimgview setImageURL:[NSURL URLWithString:[self GetImageUrl:MsgModule.M_Msg]]];
+        [sendimgview setPlaceholderImage:[UIImage imageNamed:[self GetImageUrl:MsgModule.M_Msg]]];
         
-        [bgimageview setFrame:CGRectMake(iconimage.frame.origin.x+iconimage.frame.size.width+10.0f, iconimage.frame.origin.y-2.0, sendimgview.frame.size.width+30.0f, sendimgview.frame.size.height + 20.0f)];
+        [bgimageview setFrame:CGRectMake(iconimage.frame.origin.x+iconimage.frame.size.width+10.0f, userlabel.frame.origin.y+10.0+userlabel.frame.size.height, sendimgview.frame.size.width+30.0f, sendimgview.frame.size.height + 20.0f)];
          [sendimgview setFrame:CGRectMake(bgimageview.frame.origin.x+17.0f, bgimageview.frame.origin.y+10.0, sendimgview.frame.size.width, sendimgview.frame.size.height)];
         
     }
@@ -247,7 +270,7 @@
         }
         [voicelb setFrame:CGRectMake(voicelb.frame.origin.x, voicelb.frame.origin.y, voicelb.frame.size.width, 25.0)];
         
-        [bgimageview setFrame:CGRectMake(iconimage.frame.origin.x+iconimage.frame.size.width+10.0f, iconimage.frame.origin.y, vodiobg.frame.size.width+60.0f, vodiobg.frame.size.height-10)];
+        [bgimageview setFrame:CGRectMake(iconimage.frame.origin.x+iconimage.frame.size.width+10.0f, userlabel.frame.origin.y+userlabel.frame.size.height+10, vodiobg.frame.size.width+60.0f, vodiobg.frame.size.height-10)];
         
         [vodiobg setFrame:CGRectMake(bgimageview.frame.origin.x+30.0f, bgimageview.frame.origin.y-5.0, vodiobg.frame.size.width, vodiobg.frame.size.height)];
         
@@ -305,12 +328,11 @@
         [textView setFrame:CGRectMake(10.0, 7.0f, defaultSize.width, textlb.frame.size.height)];
         [textView setBackgroundColor:[UIColor clearColor]];
         [textView addSubview:textlb];
-        [bgimageview setFrame:CGRectMake(iconimage.frame.origin.x+iconimage.frame.size.width+10.0f, iconimage.frame.origin.y-3.0, textlb.frame.size.width+30.0f, textlb.frame.size.height + 20.0)];
+        [bgimageview setFrame:CGRectMake(iconimage.frame.origin.x+iconimage.frame.size.width+10.0f, userlabel.frame.origin.y+10+userlabel.frame.size.height, textlb.frame.size.width+30.0f, textlb.frame.size.height + 20.0)];
         [textView setFrame:CGRectMake(bgimageview.frame.size.width/2.0-textlb.frame.size.width/2.0f, bgimageview.frame.size.height/2.0-textlb.frame.size.height/2.0f, textView.frame.size.width, textView.frame.size.height)];
     }
     
-    cellheight = 10.0+bgimageview.frame.origin.y;
-    cellheight += iconimage.frame.size.height+20 > bgimageview.frame.size.height ? iconimage.frame.size.height+20:bgimageview.frame.size.height;
+    cellheight = 10.0+bgimageview.frame.origin.y+bgimageview.frame.size.height+10.0f;
     
 }
 
@@ -337,6 +359,9 @@
         [resendchatbt setAlpha:0.0];
     }
     [iconimage setImageURL:[NSURL URLWithString:@"t_avter_1"]];
+    
+    [userlabel setText:MsgModule.M_From];
+    
     NSDateFormatter *ft = [[NSDateFormatter alloc] init];
     [ft setDateFormat:@"MM-dd HH:mm:ss"];
     NSTimeInterval intval=[[NSTimeZone systemTimeZone] secondsFromGMT];
@@ -350,13 +375,17 @@
     }
     if ([self GetImageUrl:MsgModule.M_Msg])
     {
+        NSLog(@"imageurl == %@",[self GetImageUrl:MsgModule.M_Msg]);
         [textView setAlpha:0.0f];
         [vodiobg setAlpha:0.0];
         [sendimgview setAlpha:1.0];
         [voicelb setAlpha:0.0];
         [sendimgview setFrame:CGRectMake(sendimgview.frame.origin.x, sendimgview.frame.origin.y, sendimgview.frame.size.width, 100.0f)];
+        
+        [sendimgview setPlaceholderImage:[UIImage imageNamed:[self GetImageUrl:MsgModule.M_Msg]]];
         [sendimgview setImageURL:[NSURL URLWithString:[self GetImageUrl:MsgModule.M_Msg]]];
-        [bgimageview setFrame:CGRectMake(iconimage.frame.origin.x-30.0-sendimgview.frame.size.width-10.0, iconimage.frame.origin.y-2.0, sendimgview.frame.size.width+30.0f, sendimgview.frame.size.height + 20.0)];
+        [sendimgview setBackgroundColor:[UIColor redColor]];
+        [bgimageview setFrame:CGRectMake(iconimage.frame.origin.x-30.0-sendimgview.frame.size.width-10.0, userlabel.frame.origin.y-2.0+userlabel.frame.size.height+10, sendimgview.frame.size.width+30.0f, sendimgview.frame.size.height + 20.0)];
         
         [sendimgview setFrame:CGRectMake(bgimageview.frame.origin.x +13.0, bgimageview.frame.origin.y+10.0f, sendimgview.frame.size.width, sendimgview.frame.size.height)];
         
@@ -378,7 +407,7 @@
             }
         }
         [vodiobg setFrame:CGRectMake(vodiobg.frame.origin.x, vodiobg.frame.origin.y, vodiobg.frame.size.width,  vodiobg.frame.size.height)];
-        [bgimageview setFrame:CGRectMake(kMM_SCREEN_W-iconimage.frame.size.width-22.0-60.0-vodiobg.frame.size.width, iconimage.frame.origin.y, vodiobg.frame.size.width+60, vodiobg.frame.size.height-10)];
+        [bgimageview setFrame:CGRectMake(kMM_SCREEN_W-iconimage.frame.size.width-22.0-60.0-vodiobg.frame.size.width, userlabel.frame.origin.y+userlabel.frame.size.height+10, vodiobg.frame.size.width+60, vodiobg.frame.size.height-10)];
         
         [vodiobg setFrame:CGRectMake(bgimageview.frame.origin.x+24.0, bgimageview.frame.origin.y-5.0f, vodiobg.frame.size.width,vodiobg.frame.size.height)];
         
@@ -436,12 +465,12 @@
         [textlb setDelegate:self];
         [textView setFrame:CGRectMake(10.0, 7.0f, textlb.frame.size.width, textlb.frame.size.height)];
         [textView addSubview:textlb];
-        [bgimageview setFrame:CGRectMake(iconimage.frame.origin.x-10.0-textView.frame.size.width-30, iconimage.frame.origin.y-3.0, textView.frame.size.width+30.0f, textView.frame.size.height + 20.0)];
+        [bgimageview setFrame:CGRectMake(iconimage.frame.origin.x-10.0-textView.frame.size.width-30, userlabel.frame.origin.y-3.0+userlabel.frame.size.height+10.0f, textView.frame.size.width+30.0f, textView.frame.size.height + 20.0)];
         [textView setFrame:CGRectMake(bgimageview.frame.size.width/2.0-textView.frame.size.width/2.0f, bgimageview.frame.size.height/2.0-textView.frame.size.height/2.0f, textView.frame.size.width, textView.frame.size.height)];
         
     }
-    cellheight = 10.0+bgimageview.frame.origin.y;
-    cellheight += iconimage.frame.size.height+20 > bgimageview.frame.size.height ? iconimage.frame.size.height+20:bgimageview.frame.size.height;
+    cellheight = 10.0+bgimageview.frame.origin.y+bgimageview.frame.size.height+10.0f;
+    
     
 }
 
@@ -470,7 +499,7 @@
         NSArray *temarr = [returnstr componentsSeparatedByString:@","];
         if ([temarr count]>0)
         {
-            returnstr = [temarr objectAtIndex:1];
+            returnstr = [temarr objectAtIndex:0];
         }
         
     }

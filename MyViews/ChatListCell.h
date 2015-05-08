@@ -32,6 +32,7 @@
 @interface ChatListCell : UITableViewCell<aya_coreTextViewDelegate>
 {
     EGOImageView *iconimage;//头像
+    UILabel      *userlabel;
     UIImageView  *bgimageview;
     UILabel      *contentlb;
     UILabel      *timelb;

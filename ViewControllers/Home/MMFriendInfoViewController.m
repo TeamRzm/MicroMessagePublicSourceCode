@@ -11,13 +11,14 @@
 #import "MMChangeRemarkViewController.h"
 #import "MMFriendAccessViewController.h"
 #import "MMAddGroupViewController.h"
+#import "MMChangePasswordViewController.h"
+#import "MMChangeTelephoneViewController.h"
 
 
 
 @interface MMFriendInfoViewController ()
 {
     BOOL isAllow;
-    UIView *selectBgview;
     NSMutableArray *selectImages;
     NSMutableArray *selectTitles;
     
@@ -28,6 +29,8 @@
 
 @implementation MMFriendInfoViewController
 @synthesize friendId;
+@synthesize isSelf;
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -51,9 +54,18 @@
 
     self.tableView.tableHeaderView = [self CreateInfoView:subFriend];
     
-    [self SetBaseNavigationRightItem:@"header_btn_list"];
-    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(ChangeRemark:) name:@"ChangeRemark_Notifiy" object:nil];
+    
+    if (isSelf)
+    {
+        [self CreateFooterView];
+    }
+    else
+    {
+        [self SetBaseNavigationRightItem:@"header_btn_list"];
+
+    }
+    
     
 
 }
@@ -126,7 +138,33 @@
     return contentView;
 }
 
-#pragma mark tableview delegate 
+-(void) CreateFooterView
+{
+    UIView *footview = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, kMM_SCREEN_W, 300.0f)];
+    [footview setBackgroundColor:[UIColor clearColor]];
+    
+    UIButton *changepwbt = [UIButton buttonWithType:UIButtonTypeCustom];
+    [changepwbt setBackgroundColor:kMM_ProjectColor_LightGreen];
+    [changepwbt setFrame:CGRectMake(20.0f, 20.0f, kMM_SCREEN_W-40.0f, 40.0f)];
+    [changepwbt.layer setCornerRadius:4.0f];
+    [changepwbt setTitle:@"修改登录密码" forState:UIControlStateNormal];
+    [changepwbt addTarget:self action:@selector(ChangePassWord:) forControlEvents:UIControlEventTouchUpInside];
+    [footview addSubview:changepwbt];
+    
+    UIButton *changetellbt = [UIButton buttonWithType:UIButtonTypeCustom];
+    [changetellbt setBackgroundColor:kMM_ProjectColor_LightGreen];
+    [changetellbt setFrame:CGRectMake(20.0f, 80.0f, kMM_SCREEN_W-40.0f, 40.0f)];
+    [changetellbt.layer setCornerRadius:4.0f];
+    [changetellbt setTitle:@"修改电话号码" forState:UIControlStateNormal];
+    [changetellbt addTarget:self action:@selector(ChangeTell:) forControlEvents:UIControlEventTouchUpInside];
+    [footview addSubview:changetellbt];
+    
+    [self.tableView setTableFooterView:footview];
+    
+    
+}
+
+#pragma mark tableview delegate
 
 -(NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -135,23 +173,17 @@
 
 -(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (tableView != self.tableView)
+    if (isSelf)
     {
-        return [selectImages count];
+        return 0;
     }
-    return 3;
+    return 4;
+    
 }
 
 -(UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [[UITableViewCell alloc] init];
-    if (tableView != self.tableView)
-    {
-        cell.textLabel.text = selectTitles[indexPath.row];
-        [cell.textLabel setTextColor:kMM_ProjectColor_StandBlue];
-        [cell.imageView setImage:[UIImage imageNamed:selectImages[indexPath.row]]];
-        return cell;
-    }
     switch (indexPath.row)
     {
         case 0:
@@ -204,6 +236,19 @@
         }
             break;
             
+        case 3:
+        {
+            UIButton *sendmessagebt = [UIButton buttonWithType:UIButtonTypeCustom];
+            [sendmessagebt setBackgroundColor:kMM_ProjectColor_StandBlue];
+            [sendmessagebt setFrame:CGRectMake(20.0f, 10.0f, kMM_SCREEN_W-40.0f, 40.0f)];
+            [sendmessagebt.layer setCornerRadius:4.0f];
+            [sendmessagebt setTitle:@"加为好友" forState:UIControlStateNormal];
+            [sendmessagebt addTarget:self action:@selector(AddToLoveFriend:) forControlEvents:UIControlEventTouchUpInside];
+            [cell.contentView addSubview:sendmessagebt];
+            
+        }
+            break;
+            
         default:
             break;
     }
@@ -212,10 +257,6 @@
 
 -(float) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (tableView != self.tableView)
-    {
-        return 40.0f;
-    }
     switch (indexPath.row)
     {
         case 0:
@@ -230,55 +271,72 @@
 
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (tableView != self.tableView)
-    {
-        [self RemoveSelectView];
-        switch (indexPath.row)
-        {
-            case 0:
-            {
-                MMChangeRemarkViewController *changeview = [[MMChangeRemarkViewController alloc] init];
-                [changeview setHidesBottomBarWhenPushed:YES];
-                [self.navigationController pushViewController:changeview animated:YES];
-                return;
-            }
-                break;
-            case 1:
-            {
-                MMFriendAccessViewController *accessview = [[MMFriendAccessViewController alloc] init];
-                [accessview setHidesBottomBarWhenPushed:YES];
-                [self.navigationController pushViewController:accessview animated:YES];
-                return;
-            }
-                break;
-            case 2:
-            {
-                MMAddGroupViewController *accessview = [[MMAddGroupViewController alloc] init];
-                [accessview setIsSendKard:YES];
-                [accessview setHidesBottomBarWhenPushed:YES];
-                [self.navigationController pushViewController:accessview animated:YES];
-                return;
-            }
-                break;
-
-            case 3:
-            {
-                SIAlertView *alertview = [[SIAlertView alloc] initWithTitle:@"温馨提示" andMessage:@"若将Ta删除，你们将从彼此的友录中消失"];
-                [alertview addButtonWithTitle:@"取消" type:SIAlertViewButtonTypeCancel handler:nil];
-                [alertview addButtonWithTitle:@"删除" type:SIAlertViewButtonTypeDefault handler:^(SIAlertView *alertview){}];
-                [alertview show];
-                
-                
-                return;
-            }
-                break;
-
-                
-            default:
-                break;
-        }
-    }
+    
 }
+
+#pragma  mark MMTypeListView delegate
+-(void)MMTypeListViewClickedWithIndex:(NSInteger)index
+{
+    NSLog(@"index == %d",index);
+    
+    [self MMTypeListViewCancel];
+    
+    switch (index)
+    {
+        case 0:
+        {
+            MMChangeRemarkViewController *changeview = [[MMChangeRemarkViewController alloc] init];
+            [changeview setHidesBottomBarWhenPushed:YES];
+            [self.navigationController pushViewController:changeview animated:YES];
+            return;
+        }
+            break;
+        case 1:
+        {
+            MMFriendAccessViewController *accessview = [[MMFriendAccessViewController alloc] init];
+            [accessview setHidesBottomBarWhenPushed:YES];
+            [self.navigationController pushViewController:accessview animated:YES];
+            return;
+        }
+            break;
+        case 2:
+        {
+            MMAddGroupViewController *accessview = [[MMAddGroupViewController alloc] init];
+            [accessview setIsSendKard:YES];
+            [accessview setHidesBottomBarWhenPushed:YES];
+            [self.navigationController pushViewController:accessview animated:YES];
+            return;
+        }
+            break;
+            
+        case 3:
+        {
+            SIAlertView *alertview = [[SIAlertView alloc] initWithTitle:@"温馨提示" andMessage:@"若将Ta删除，你们将从彼此的友录中消失"];
+            [alertview addButtonWithTitle:@"取消" type:SIAlertViewButtonTypeCancel handler:nil];
+            [alertview addButtonWithTitle:@"删除" type:SIAlertViewButtonTypeDefault handler:^(SIAlertView *alertview){}];
+            [alertview show];
+            
+            
+            return;
+        }
+            break;
+            
+            
+        default:
+            break;
+    }
+
+    
+}
+
+-(void)MMTypeListViewCancel
+{
+    [_listView removeFromSuperview];
+    _listView = nil;
+    
+}
+
+
 
 #pragma mark Sender Method
 
@@ -308,46 +366,38 @@
     [chatview setHidesBottomBarWhenPushed:YES];
     [self.navigationController pushViewController:chatview animated:YES];
 }
+-(void) AddToLoveFriend: (UIButton *) sender
+{
+    
+}
+
+-(void) ChangePassWord: (UIButton *) sender
+{
+    MMChangePasswordViewController *changepwview = [[MMChangePasswordViewController alloc] init];
+    [changepwview setHidesBottomBarWhenPushed:YES];
+    [self.navigationController pushViewController:changepwview animated:YES];
+}
+
+-(void) ChangeTell: (UIButton *) sender
+{
+    MMChangeTelephoneViewController *changetellview = [[MMChangeTelephoneViewController alloc] init];
+    [changetellview setHidesBottomBarWhenPushed:YES];
+    [self.navigationController pushViewController:changetellview animated:YES];
+}
 
 -(void)BaseNavigatinRightItemClicked:(UIButton *)sender
 {
-    if (selectBgview)
+    if (_listView)
     {
-        [selectBgview removeFromSuperview];
-        selectBgview = nil;
+        [_listView removeFromSuperview];
+        _listView = nil;
     }
     else
     {
-        selectBgview = [[UIView alloc] initWithFrame:self.tableView.frame];
-        [selectBgview setBackgroundColor:[UIColor clearColor]];
         
-       
-        
-        
-        UIView *bgview = [[UIView alloc] initWithFrame:selectBgview.frame];
-        [bgview setBackgroundColor:kMM_ProjectColor_DeepGray];
-        [bgview setAlpha:0.7];
-        [selectBgview addSubview:bgview];
-        UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(RemoveSelectView)];
-        [bgview addGestureRecognizer:gesture];
-        
-        
-        _selectTableview = [[UITableView alloc] initWithFrame:CGRectMake(kMM_SCREEN_W-200.0f, 5.0f, 180.0f, 180.0f) style:UITableViewStylePlain];
-        [_selectTableview setDataSource:self];
-        [_selectTableview setDelegate:self];
-        [_selectTableview setBackgroundColor:[UIColor whiteColor]];
-        [selectBgview addSubview:_selectTableview];
-        [self.view addSubview:selectBgview];
-    }
-}
-
--(void) RemoveSelectView
-{
-    if (selectBgview)
-    {
-        [selectBgview removeFromSuperview];
-        selectBgview = nil;
-        
+        _listView = [[MMTypeListView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, kMM_SCREEN_W, kMM_SCREEN_H) withTitls:selectTitles withImages:selectImages];
+        [_listView setDelegate:self];
+        [self.view addSubview:_listView];
     }
 }
 
