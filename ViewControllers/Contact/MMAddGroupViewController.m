@@ -47,6 +47,8 @@
     
 }
 
+#pragma mark Data Method
+
 -(void) LoadData
 {
     //组织数据源
