@@ -310,6 +310,10 @@
 		961FA4161AFB79D000283FCB /* MMLoveFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 961FA4151AFB79D000283FCB /* MMLoveFriendViewController.m */; };
 		961FA4191AFB812400283FCB /* MMChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 961FA4181AFB812400283FCB /* MMChangePasswordViewController.m */; };
 		961FA41C1AFB814700283FCB /* MMChangeTelephoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 961FA41B1AFB814700283FCB /* MMChangeTelephoneViewController.m */; };
+		962591521B0379790039D360 /* MMFriendDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9625914C1B0379790039D360 /* MMFriendDetailViewController.m */; };
+		962591531B0379790039D360 /* MMZoneCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9625914D1B0379790039D360 /* MMZoneCell.m */; };
+		962591541B0379790039D360 /* MMZoneDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9625914F1B0379790039D360 /* MMZoneDetailCell.m */; };
+		962591551B0379790039D360 /* MMZoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 962591511B0379790039D360 /* MMZoneViewController.m */; };
 		9684EFA51AF5F71300DAA6F5 /* bnt_dropbnt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9684EFA01AF5F71300DAA6F5 /* bnt_dropbnt@2x.png */; };
 		9684EFA61AF5F71300DAA6F5 /* btn_delete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9684EFA11AF5F71300DAA6F5 /* btn_delete@2x.png */; };
 		9684EFA71AF5F71300DAA6F5 /* ico_camero@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9684EFA21AF5F71300DAA6F5 /* ico_camero@2x.png */; };
@@ -946,6 +950,13 @@
 		961FA4181AFB812400283FCB /* MMChangePasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MMChangePasswordViewController.m; path = ViewControllers/Other/MMChangePasswordViewController.m; sourceTree = "<group>"; };
 		961FA41A1AFB814700283FCB /* MMChangeTelephoneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MMChangeTelephoneViewController.h; path = ViewControllers/Other/MMChangeTelephoneViewController.h; sourceTree = "<group>"; };
 		961FA41B1AFB814700283FCB /* MMChangeTelephoneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MMChangeTelephoneViewController.m; path = ViewControllers/Other/MMChangeTelephoneViewController.m; sourceTree = "<group>"; };
+		9625914B1B0379790039D360 /* MMFriendDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MMFriendDetailViewController.h; path = ViewControllers/Friends/MMFriendDetailViewController.h; sourceTree = "<group>"; };
+		9625914C1B0379790039D360 /* MMFriendDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MMFriendDetailViewController.m; path = ViewControllers/Friends/MMFriendDetailViewController.m; sourceTree = "<group>"; };
+		9625914D1B0379790039D360 /* MMZoneCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MMZoneCell.m; path = ViewControllers/Friends/MMZoneCell.m; sourceTree = "<group>"; };
+		9625914E1B0379790039D360 /* MMZoneDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MMZoneDetailCell.h; path = ViewControllers/Friends/MMZoneDetailCell.h; sourceTree = "<group>"; };
+		9625914F1B0379790039D360 /* MMZoneDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MMZoneDetailCell.m; path = ViewControllers/Friends/MMZoneDetailCell.m; sourceTree = "<group>"; };
+		962591501B0379790039D360 /* MMZoneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MMZoneViewController.h; path = ViewControllers/Friends/MMZoneViewController.h; sourceTree = "<group>"; };
+		962591511B0379790039D360 /* MMZoneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MMZoneViewController.m; path = ViewControllers/Friends/MMZoneViewController.m; sourceTree = "<group>"; };
 		9684EFA01AF5F71300DAA6F5 /* bnt_dropbnt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bnt_dropbnt@2x.png"; sourceTree = "<group>"; };
 		9684EFA11AF5F71300DAA6F5 /* btn_delete@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_delete@2x.png"; sourceTree = "<group>"; };
 		9684EFA21AF5F71300DAA6F5 /* ico_camero@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ico_camero@2x.png"; sourceTree = "<group>"; };
@@ -1317,6 +1328,13 @@
 				5B9770361AF7B56C00A0E283 /* FriendCircleContentEntity.m */,
 				5B6F1C7A1AE8E2A8006CC1A6 /* MMFriendsViewController.h */,
 				5B6F1C7B1AE8E2A8006CC1A6 /* MMFriendsViewController.m */,
+				9625914B1B0379790039D360 /* MMFriendDetailViewController.h */,
+				9625914C1B0379790039D360 /* MMFriendDetailViewController.m */,
+				9625914D1B0379790039D360 /* MMZoneCell.m */,
+				9625914E1B0379790039D360 /* MMZoneDetailCell.h */,
+				9625914F1B0379790039D360 /* MMZoneDetailCell.m */,
+				962591501B0379790039D360 /* MMZoneViewController.h */,
+				962591511B0379790039D360 /* MMZoneViewController.m */,
 			);
 			name = Friends;
 			sourceTree = "<group>";
@@ -2817,6 +2835,7 @@
 				96D2526E1AF50B5900B1949E /* MMFriendInfoViewController.m in Sources */,
 				5B6F1C8E1AE8E46C006CC1A6 /* ConversationEntity.m in Sources */,
 				969E75FA1AFCDC5F0026BD5F /* MMTypeListView.m in Sources */,
+				962591521B0379790039D360 /* MMFriendDetailViewController.m in Sources */,
 				5B6F1E4B1AE8F03B006CC1A6 /* CTAssetsSupplementaryView.m in Sources */,
 				5B6F1E321AE8F03B006CC1A6 /* aya_MultimediaKeyBoard.m in Sources */,
 				5B6F1EDF1AE8F03B006CC1A6 /* SBJsonTokeniser.m in Sources */,
@@ -2861,6 +2880,8 @@
 				96D790A81AFA26D2007B5E02 /* aya_markupParser.m in Sources */,
 				5B6F1E481AE8F03B006CC1A6 /* CTAssetsGroupViewController.m in Sources */,
 				5B6F1E311AE8F03B006CC1A6 /* Reachability.m in Sources */,
+				962591551B0379790039D360 /* MMZoneViewController.m in Sources */,
+				962591541B0379790039D360 /* MMZoneDetailCell.m in Sources */,
 				5B6F1E4C1AE8F03B006CC1A6 /* CTAssetsViewCell.m in Sources */,
 				5B6F1E4D1AE8F03B006CC1A6 /* CTAssetsViewController.m in Sources */,
 				960245251AF9087F00389517 /* MMContactCell.m in Sources */,
@@ -2894,6 +2915,7 @@
 				5B6F1E231AE8F03B006CC1A6 /* ASICloudFilesCDNRequest.m in Sources */,
 				5B6F1C791AE8E28B006CC1A6 /* MMHomeViewController.m in Sources */,
 				5B6F1E251AE8F03B006CC1A6 /* ASICloudFilesContainerRequest.m in Sources */,
+				962591531B0379790039D360 /* MMZoneCell.m in Sources */,
 				5B6F1EDE1AE8F03B006CC1A6 /* SBJsonStreamWriterState.m in Sources */,
 				96D790991AF9F406007B5E02 /* UIImage+BoxBlur.m in Sources */,
 				96C97A6D1AF71AC500962052 /* MMCheckGroupViewController.m in Sources */,

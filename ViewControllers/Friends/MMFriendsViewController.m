@@ -9,6 +9,10 @@
 #import "MMFriendsViewController.h"
 #import "XHImageViewer.h"
 #import "CommentTableViewCell.h"
+#import "MMZoneViewController.h"
+#import "MMFriendDetailViewController.h"
+
+
 
 @interface MMFriendsViewController () <UITableViewDelegate, UITableViewDataSource,CommentTableViewCellDelegate,XHImageViewerDelegate>
 {
@@ -53,7 +57,11 @@
     
     headAvterImageView = [[EGOImageView alloc] initWithPlaceholderImage:[UIImage imageNamed:@"t_avter_9"]];
     headAvterImageView.frame = CGRectMake(kMM_SCREEN_W / 2.0f - 50.0f / 2.0f, 102.5f, 50.0f, 50.0f);
+    [headAvterImageView setUserInteractionEnabled:YES];
+    UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(GotoZone)];
+    [headAvterImageView addGestureRecognizer:gesture];
     [tableViewHeadView addSubview:headAvterImageView];
+    
     
     userNameLable = [[UILabel alloc] initWithFrame:CGRectMake(0, 165, kMM_SCREEN_W, 20)];
     userNameLable.font = [UIFont fontWithName:kMM_DEFAULT_FONT_NAME_BLOD size:14.0f];
@@ -61,6 +69,13 @@
     userNameLable.text = @"怪蜀黍隔壁的小妹妹";
     userNameLable.textAlignment = NSTextAlignmentCenter;
     [tableViewHeadView addSubview:userNameLable];
+}
+
+-(void) GotoZone
+{
+    MMZoneViewController *zoneview = [[MMZoneViewController alloc] init];
+    [zoneview setHidesBottomBarWhenPushed:YES];
+    [self.navigationController pushViewController:zoneview animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -75,7 +90,7 @@
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-//    return boundTableViewDataSource.count;
+    //    return boundTableViewDataSource.count;
     return 10;
 }
 
@@ -132,20 +147,11 @@
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    if (currentSegmentIndex == 0 || currentSegmentIndex == 2)
-//    {
-//        ComentDetailViewController *nVC = [[ComentDetailViewController alloc] initWithNibName:nil bundle:nil];
-//        nVC.hidesBottomBarWhenPushed = YES;
-//        [self.navigationController pushViewController:nVC animated:YES];
-//    }
-//    else if (currentSegmentIndex == 1)
-//    {
-//        ActivityDetailViewController *nVC = [[ActivityDetailViewController alloc] initWithNibName:nil bundle:nil];
-//        nVC.hidesBottomBarWhenPushed = YES;
-//        [self.navigationController pushViewController:nVC animated:YES];
-//    }
-//    
-//    return ;
+    
+    MMFriendDetailViewController *detailview = [[MMFriendDetailViewController alloc] init];
+    [detailview setHidesBottomBarWhenPushed:YES];
+    [self.navigationController pushViewController:detailview animated:YES];
+    
 }
 
 - (void) commentTableViewCell : (CommentTableViewCell*) _cell tapSubImageViews : (UIImageView*) tapView allSubImageViews : (NSMutableArray *) _allSubImageviews
@@ -156,13 +162,13 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end
